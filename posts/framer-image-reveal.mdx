@@ -1,0 +1,331 @@
+---
+title: 'Image reveal animation effect using Framer Motion and React'
+date: 'June 6, 2022'
+description: Ever wonder how to create popular animation effects on websites? Learn how to recreate a popular gsap image reveal effect using framer motion and React
+thumbnailUrl: '/blog_1.jpg'
+tags: ['react', 'javascript', 'framer', 'motion']
+category: 'Tutorial'
+---
+<div className="intro">
+  ## 1. Introduction
+  Today, we will be creating the following image reveal effect using Framer Motion and React.
+  It's relatively simple to set up and won't take too much time.
+
+  ![Alt Text](/gifs/image-reveal.gif)
+
+  Typically, these sort of effects are created using other animation libraries such as GSAP.
+  GSAP is preferable for more complex and flexible animations, but required more manual setup 
+  to configure properly, and was a bit awkward to use with React in some use cases.
+
+  In comparison, Framer Motion was built for React, and I personally found that it integrates far easier 
+  than other animation libraries while giving us access to powerful effects.
+
+  When trying to learn Framer motion however, I found that there weren't many community resources on 
+  recreating popular animation effects, and created this blog in hopes that someone trying to learn Framer Motion
+  like I was not long ago will find this useful.
+  <br/><br/><br/>
+</div>
+
+<div className='setup'>
+  ## 2. Project Setup
+  <br/>
+
+  First, let's create our React app.
+  ```
+  npx create-react-app image-reveal
+  ```
+  <br/>
+  Next, let's install Framer Motion and import some libraries we will need for the project.
+  ```
+  npm install framer-motion
+  ```
+  <br/>
+  Then import motion from Framer Motion into your App.js file
+  ```
+  import { motion } from 'framer-motion';
+  ```
+</div>
+<br/><br/><br/>
+
+<div className='skeleton'>
+  ## 3. Creating the HTML/CSS
+  Let's start by deleting the default App.js content. 
+  Next, let's create write some basic html to hold our image
+  <br/>
+
+  ```
+  function App() {
+    return (
+      <main className="container">
+        <div className="image">
+          <div className="overlay"></div>
+          <img src={image}/>
+        </div>
+      </main>
+    );
+  }
+  ```
+  <br/>
+  Notice that we've created an empty div element above the image element.
+  This div element will act as an overlay that will cover our image with the background color.
+  We will then put a x transform animation on the overlay element, creating the image reveal effect.
+  Add the following css to get started:
+
+  ```
+  $base-color: #e7ddcd;
+
+  .container{
+    width: 100vw;
+    height: 100vh;
+    background-color: $base-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .image{
+      width: 40%;
+      img{
+        width: 100%;
+      }
+    }
+  }
+  ```
+  <br/>
+
+  .container will hold the parent container width and height, and uses flex to horizontally
+  and vertically center the container.
+  .image sets the container width of the img element and overlay element, which will be 40% of the view width. 
+  We've also added a scss variable to store our background color to use for the overlay.
+
+  Your image element should now be responsive when you resize the window now.
+  Below is what the project should look like at this point. 
+
+  ![Alt Text](/gifs/image-resize.gif)
+
+  Next, let's create the overlay effect.
+
+  ```
+  .image{
+      width: 40%;
+      position: relative;
+      overflow: hidden;
+      .overlay{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: $base-color;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  ```
+  <br/>
+
+  Inside .image, we added the .overlay class and set the width and height to 100%, 
+  to fit the parent .image container.
+  We set position: relative to the parent .image container, and set the .overlay  to position: absolute to position 
+  over the container. 
+
+  Now, the overlay should be directly responsive with the image. You're screen should only be displaying 
+  your background color at this point.
+
+</div>
+
+<br/><br/><br/>
+
+<div className='framer'>
+  ## 4. Setting up Framer Motion
+  Earlier, we installed and imported framer motion into our App.js file. Let's start using it.
+
+  First, Let's convert our overlay and image elements into motion elements. This allows us to apply framer motion animations to 
+  their respective elements.
+
+  ```
+  <>
+    <div className="image">
+      <motion.div>
+        className="overlay"
+      </motion.div> 
+      <motion.img>
+        src={image}
+      </motion.img> 
+    </div>
+  </>
+
+  ```
+  <br/>
+
+  Next, let's add some properties to each element that we'll need to apply the effects.
+
+  ```
+  <>
+    <div>
+      <motion.div>
+        className="overlay"
+        variants={{
+          visible: { 
+            opacity: 1, 
+            x: "0%", 
+          },
+          hidden: { 
+            opacity: 1, 
+            x: "100%", 
+            transition: { 
+              delay: 0.5, 
+              duration: 2, 
+              ease: "easeInOut"
+            }
+          }
+        }}
+        initial='visible'
+        animate='hidden'
+      </motion.div> 
+      <motion.img>
+        src={image}
+      </motion.img> 
+    </div>
+  </>
+  ```
+  <br/>
+
+  Inside the overlay ```motion.div``` we've declared a set of variants. Variants 
+  contain sets of predefined target objects that allow us to orchestrate animations in a declarative way.
+  Inside our variant, we've created a ```visible``` object and ```hidden``` object.
+  Think of these objects as "start" and "end". It starts with the properties set in visible, and ends with the properties set in hidden.
+
+  In our case, the initial state is set to visible. Our animation is then set to the properties in hidden, which results in a x transformation
+  of the overlay by a 100%, which creates the illusion that the image is being revealed.
+
+  Transition properties are also set in an object inside .hidden, which you can customize based on your preferences.
+
+  If you have followed along until here, you should have a simple image reveal effect. Next, we'll add a scaling effect on the image to achieve
+  a more natural and smooth look to the overall animation.
+
+  Next, let's change up the img element and apply Framer Motion to it. Change the img element to the following code
+
+  ```
+  <>
+    <motion.img 
+      src={image}
+      variants={{
+        visible: {
+          scale: 1.3
+        },
+        hidden: {
+          scale: 1,
+          transition: {
+            delay: 0.5, 
+            duration: 3, 
+            ease: "easeInOut"
+          }
+        }
+      }}
+      initial='visible'
+      animate='hidden'
+    />
+  </>
+  ```
+  <br/>
+
+  Above, we applied properties similar to the overlay, but here we apply a scale transformation rather than an x transformation.
+  Here is the full App.js code
+
+  ```
+  import image from './assets/image.jpg';
+  import { motion } from 'framer-motion';
+  import './App.scss';
+
+  function App() {
+    return (
+      <main className="container">
+        <div className="image">
+          <motion.div 
+            className="overlay"
+            variants={{
+              visible: { 
+                opacity: 1, 
+                x: "0%", 
+              },
+              hidden: { 
+                opacity: 1, 
+                x: "100%", 
+                transition: { 
+                  delay: 0.5, 
+                  duration: 2, 
+                  ease: "easeInOut"
+                }
+              }
+            }}
+            initial = 'visible'
+            animate = 'hidden'
+            >
+          </motion.div>
+          <motion.img 
+            src={image}
+            variants={{
+              visible: {
+                scale: 1.3
+              },
+              hidden: {
+                scale: 1,
+                transition: {
+                  delay: 0.5, 
+                  duration: 3, 
+                  ease: "easeInOut"
+                }
+              }
+            }}
+            initial='visible'
+            animate='hidden'
+          />
+        </div>
+      </main>
+    );
+  }
+
+  export default App;
+
+  ```
+  <br/>
+
+  And here is the full scss code
+
+  ```
+  $base-color: #e7ddcd;
+
+  .container{
+    width: 100vw;
+    height: 100vh;
+    background-color: $base-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .image{
+      width: 40%;
+      position: relative;
+      overflow: hidden;
+      .overlay{
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        background-color: $base-color;
+        z-index: 1;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  ```
+  <br/>
+
+  And there you have it! You should now have the image reveal effect up and working, like below.
+  Here is a link to the Github repo.
+
+  ![Alt Text](/gifs/image-reveal.gif)
+</div>
+

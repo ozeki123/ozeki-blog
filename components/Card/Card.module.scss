@@ -1,0 +1,52 @@
+.card{
+  height: 100%;
+  overflow: hidden;
+  img{
+    cursor: pointer;
+    width: 100%;
+  }
+  
+
+  .details{
+    height: 30%;
+    position: relative;
+    .subheading{
+      width: 190px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 12px;
+      
+      .category{
+        text-transform: uppercase;
+        color: #2551EE;
+      }
+      p{
+        font-size: 15px;
+      }
+      .circle{
+        width: 7px;
+        height: 7px;
+        background-color: #2551EE;
+        border-radius: 10px;
+        }
+    }
+    .title{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      white-space: normal;
+
+      h5{
+        font-size: 2.7rem;
+        font-weight: lighter;
+        word-break: normal;
+        margin: 55px 0;
+      }
+    }
+    
+  }
+
+  
+}

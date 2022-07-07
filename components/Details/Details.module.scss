@@ -1,0 +1,19 @@
+.details{
+  display: flex;
+  align-items: center;
+  .type{
+    text-transform: uppercase;
+    color: #2551EE;
+  }
+  p{
+    font-size: 15px;
+  }
+  .circle{
+    width: 7px;
+    height: 7px;
+    background-color: #2551EE;
+    border-radius: 10px;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+  }
+}

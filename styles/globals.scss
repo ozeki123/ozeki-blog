@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+html,
+body {
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  font-family: 'Aileron';
+  font-weight: lighter;
+  background-color: rgb(241, 241, 241);
+}
+
+h1,h2,h3,h4,h5{
+  font-weight: lighter;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: Aileron;
+  src: url('../fonts/Aileron-Regular.otf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: Aileron;
+  src: url('../fonts/Aileron-Light.otf');
+  font-weight: lighter;
+}
+@font-face {
+  font-family: Aileron;
+  src: url('../fonts/Aileron-SemiBold.otf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: Ethereal;
+  src: url('../fonts/Ethereal-Thin.otf');
+}
+@font-face {
+  font-family: Fira;
+  src: url('../fonts/FiraCode-Light.ttf');
+}
+

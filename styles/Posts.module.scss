@@ -1,0 +1,123 @@
+
+
+.container{
+  width: 100%;
+  height: 100%;
+  .contents{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .header{
+      
+      width: 60%;
+      margin: 7% 0;
+      .banner{
+        width: 100%;
+
+      }
+      h1{
+        width: 100%;
+        font-family: 'Ethereal';
+        font-size: 4rem;
+        letter-spacing: -0.5px;
+        margin: 2% 0;
+        line-height: 4.3rem;
+      }
+      h3{
+        margin: 3% 0;
+        width: 80%;
+        line-height: 1.5rem;
+      }
+    }
+    
+    img{
+      width: 100vw;
+      margin: 5% 0;
+    }
+
+    .markdown{
+      height: 100%;
+      position: relative;
+      width: 77%;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0% 0%;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+
+      .top{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        right: 68%;
+        overflow: visible;
+        .toc{
+          display: flex;
+          justify-content: center;
+          align-self: flex-start;
+          height: auto;
+          position: sticky;
+          top: 0;
+          
+          
+          
+          .headings{
+            display: flex;
+            flex-direction: column;
+            margin: 10% 0;
+            .row{
+              a{
+                display: flex;
+                flex-direction: column;
+                margin: 6% 0;
+                color: #8f8f8f;
+                font-size: 0.9rem;
+              }
+              .title{
+                display: relatiev;
+              }
+              & .hello{
+                color: #4d4d4d !important;
+              }
+            }
+            p{
+              margin: 5% 0;
+              text-transform: uppercase;
+            }
+            
+          }
+        }
+      }
+      
+      
+      h2{
+        font-size: 1.8rem;
+        color: rgb(53, 58, 63);
+        font-weight: 500;
+      }
+      p{
+        margin: 2% 0;
+        line-height: 26px;
+        color: rgb(64, 73, 80);
+      }
+      .mdx{
+        width: 87%;
+        margin: 9% 0;
+        
+        img{
+          width: 70% !important;
+        }
+      }
+    }
+  }
+  
+}
+
+
+
+.visible{
+  color: blue !important;
+}
+

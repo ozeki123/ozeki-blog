@@ -1,0 +1,13 @@
+.close{
+  cursor: pointer;
+  .line1{
+    width: 45px;
+    border-bottom: 1px solid rgb(54, 54, 54);
+    transform: rotate(45deg);
+  }
+  .line2{
+    width: 45px;
+    border-bottom: 1px solid rgb(54, 54, 54);
+    transform: rotate(-45deg);
+  }
+}

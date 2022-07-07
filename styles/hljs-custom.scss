@@ -1,0 +1,54 @@
+$color-blue: #00a2ff;
+$color-red: #ee3ead;
+$color-purple: rgb(165, 152, 197);
+
+.hljs{
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+}
+
+.hljs,
+.hljs-subst {
+  color: black;
+}
+
+code[class*="language-javascript"] {
+  color: #00a2ff;
+}
+code[class*="language-scss"] {
+  color: #00a2ff;
+}
+code[class*="language-css"] {
+  color: #00a2ff;
+}
+
+.hljs{
+  font-family: 'Fira';
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: -0.5px;
+  border: 1px solid #d7d5ec9c;
+  background-color: #f1eaed31;
+  border-radius: 10px;
+  padding: 3.5%;
+  color: #00a2ff;
+  // .hljs-string{
+  //   color: $color-purple;
+  // }
+  
+  .hljs-keyword, 
+  .hljs-title,
+  .hljs-selector-class,
+  .hljs-selector-tag,
+  .hljs-name
+  {
+    color: $color-red;
+  }
+  // .hljs-variable{
+  //   color: $color-purple;
+  // }
+
+  
+}
+
