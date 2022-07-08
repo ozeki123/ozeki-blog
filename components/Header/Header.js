@@ -38,11 +38,11 @@ const Header = () => {
         >
           <Link href="/" passHref>
             <a>
-              <h2>Ozeki</h2>
+              <h2>Ozeki Blog</h2>
             </a>
             
           </Link>
-          <p>front end developer</p>
+          <p>Front end development</p>
         </motion.div>
         <motion.div 
           className={styles.right}

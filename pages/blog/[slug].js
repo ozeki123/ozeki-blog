@@ -153,6 +153,7 @@ const PostFile = ({ posts, slug, frontMatter: { title, thumbnailUrl, description
             setCounter(counter - 1);
           }
           
+          
         if(entry.isIntersecting === true){
           setCounter(counter + 1);
          } else{
@@ -254,7 +255,6 @@ const PostFile = ({ posts, slug, frontMatter: { title, thumbnailUrl, description
                   </div>
                 </aside>    
               </div>
-              <p>{ isVisible ? 'Yes! 🥳' : 'No 🙈' }</p>
               <div className={styles.mdx}>
                   <div>
                     <MDXRemote {...mdxSource} components={components}>
